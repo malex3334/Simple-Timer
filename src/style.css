@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px;
+  font-size: 42px;
+}
+
+p {
+  padding: 15px;
+  line-height: 1.7;
+  letter-spacing: 1.7px;
+  color: rgb(238, 236, 236, 0.9);
+}
+
+.container {
+  /* padding: 25px; */
+  color: white;
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+
+  background-color: rgba(132, 132, 132, 0.945);
+}
+.container::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  opacity: 0.1;
+  background-image: url("https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80");
+}
+
+.navigation {
+  height: 2.5em;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: space-evenly;
+  /* position: fixed;
+  width: 100%;
+  bottom:0; */
+  gap: 25px;
+  background-color: rgba(255, 68, 0, 1);
+}
+
+.nav {
+  margin-top: auto;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+@media (min-width: 600px) {
+  .container {
+    margin: 25px auto;
+    /* background-color: rgba(255, 255, 255, 0.945); */
+    background-color: rgba(132, 132, 132, 0.945);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 25px 25px 50px 25px;
+    max-width: 40%;
+    z-index: -1;
+    min-height: 75vh;
+  }
+
+  body {
+    /* background-color: rgba(0, 0, 0, 0.212); */
+    background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    /* background-image: url("https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-size: cover;
+    background-position: 110%; */
+  }
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
