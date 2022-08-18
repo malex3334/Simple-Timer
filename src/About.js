@@ -9,6 +9,8 @@ export default function About() {
         like it too. My main goal was to keep everything simple and provide
         basic set of timers such as Tabata / HIIT Timer.
       </p>
+      <p style={{ textAlign: "right", paddingRight: "50px" }}>M.A.</p>
+      <p>Work in progress...</p>
     </div>
   );
 }
