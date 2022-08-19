@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { secTohuman, editTimers, updateValues } from "../utils/TimerFunctions";
+import WHTimerCSS from "./WHTimer.module.css";
 
 export default function WHTimer() {
   const [defaultValues, setDefaultValeus] = useState({
-    breathingTime: 5,
-    restTime: 5,
+    breathingTime: 30,
+    restTime: 15,
   });
 
   const [intervaltest, setintervaltest] = useState();
@@ -14,11 +15,17 @@ export default function WHTimer() {
   const [isHolding, setIsHolding] = useState(false);
   const [isResting, setIsResting] = useState(false);
 
-  const [breathCountdown, setBreathCountdown] = useState(5);
+  const [breathCountdown, setBreathCountdown] = useState();
   const [breathHoldTimer, setBreathHoldTimer] = useState(0);
   const [restCountdown, setRestCountdown] = useState(5);
-  const [declaredRestCountdown, setDeclaredRestcountdown] = useState(5);
-  const [declaredBreathCountdown, setDeclaredBreathCountdown] = useState(5);
+  const [declaredBreathCountdown, setDeclaredBreathCountdown] = useState(
+    defaultValues.breathingTime
+  );
+  const [declaredRestCountdown, setDeclaredRestcountdown] = useState(
+    defaultValues.restTime
+  );
+
+  const [rounds, setRounds] = useState(0);
   let breathTimer;
   let holdTimer;
   let restTimer;
@@ -26,6 +33,8 @@ export default function WHTimer() {
   const handleStart = function () {
     // isRunning ? setIsRunning(false) : setIsRunning(true);
     if (!isRunning) {
+      setRounds(0);
+      setBreathHoldTimer(0);
       setIsRunning(true);
       setIsBreathing(false);
     } else {
@@ -79,6 +88,7 @@ export default function WHTimer() {
         setIsResting(false);
         setIsBreathing(true);
         setRestCountdown(declaredRestCountdown);
+        setRounds((prev) => prev + 1);
       }
     }
 
@@ -170,15 +180,40 @@ export default function WHTimer() {
         <button onClick={() => handleStart()}>
           {isRunning ? "stop" : "start"}
         </button>
-        <button>Finish</button>
+        <button>finish</button>
       </div>
-
+      <span
+        style={{
+          fontSize: "24px",
+          display: "block",
+          textAlign: "center",
+          margin: "15px auto",
+        }}
+      >
+        Rounds: {rounds}
+      </span>
       {/* Outputs */}
-      <div className="outputsContainer" onClick={() => handleStopTimer()}>
+      <div
+        // className="outputsContainer"
+        className={`outputsContainer ${
+          // isRunning ? WHTimerCSS.outputCircle : ""
+          (isRunning && isBreathing && WHTimerCSS.outputCircle) ||
+          (isRunning && isHolding && WHTimerCSS.breathout) ||
+          (isRunning && isResting && WHTimerCSS.breathin)
+        }`}
+        onClick={
+          !isRunning
+            ? () => {
+                handleStart();
+              }
+            : () => handleStopTimer()
+        }
+      >
         {/* timers etc */}
         {!isRunning && (
           <>
             <span>Get ready..</span>
+            <span>Press start</span>
           </>
         )}
         {isBreathing && isRunning && (
