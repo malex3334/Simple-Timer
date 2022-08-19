@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -39,7 +39,7 @@ p {
   background-color: rgba(132, 132, 132, 0.945);
 }
 .container::before {
-  content: "";
+  content: '';
   z-index: -1;
   position: absolute;
   bottom: 0;
@@ -47,7 +47,7 @@ p {
   width: 100%;
   min-height: 100%;
   opacity: 0.1;
-  background-image: url("https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80");
+  background-image: url('https://images.unsplash.com/photo-1528543606781-2f6e6857f318?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80');
 }
 
 .navigation {
@@ -79,6 +79,10 @@ li a {
 }
 
 @media (min-width: 600px) {
+  h2 {
+    border-radius: 8px;
+  }
+
   .container {
     margin: 25px auto;
     /* background-color: rgba(255, 255, 255, 0.945); */
@@ -121,4 +125,123 @@ li a {
   100% {
     transform: scale(1);
   }
+}
+
+
+
+/* testing  */
+
+input,
+input:disabled {
+  font-size: 18px;
+  width: 4ch;
+  padding: 1ch;
+  text-align: center;
+  border: none;
+  background-color: orangered;
+  color: white;
+
+  -webkit-appearance: none;
+  border-radius: 5px;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 1; /* required on iOS */
+}
+
+h2 {
+  /* background-color: rgba(255, 68, 0, 0.75); */
+  background-color: rgba(255, 68, 0, 1);
+  margin: 10px 0 30px 0;
+  padding: 0.3em 0.75em;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+
+button {
+  color: white;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.inputContainer {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.inputControl label {
+  width: 3em;
+  text-align: end;
+}
+
+.inputControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 25px;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.startButtonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.startButtonsContainer button {
+  /* background-color: greenyellow; */
+  border: 3px solid greenyellow;
+  padding: 0.5em 0.75em;
+  border-radius: 10px;
+  width: 8ch;
+}
+
+.startButtonsContainer button:last-child {
+  /* color: orangered; */
+  border-color: white;
+}
+
+/*  outputs  */
+
+.outputsContainer {
+  font-size: 18px;
+  margin: 25px auto 10px auto;
+  width: 220px;
+  height: 220px;
+  border: 5px solid orangered;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.outputsContainer:active,
+button:active {
+  transform: scale(0.95);
+}
+
+.timer {
+  font-size: 42px;
+}
+
+@media (min-width: 900px) {
+  .inputContainer {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+
 }

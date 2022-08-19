@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import "./style.css";
-import HiitTimer from "./hittimer/HiitTimer";
-import About from "./About";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import './style.css';
+import HiitTimer from './hittimer/HiitTimer';
+import WHTimer from './whtimer/WHTimer';
+import About from './About';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
 let activeStyle = {
   // textDecoration: 'underline',
-  borderBottom: "2px solid white",
-  padding: "0 2px 3px 2px",
+  borderBottom: '2px solid white',
+  padding: '0 2px 3px 2px',
 };
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HiitTimer />} />
           <Route path="/hiit" element={<HiitTimer />} />
+          <Route path="/whtimer" element={<WHTimer />} />
           <Route path="/about" element={<About />} />
         </Routes>
         {/* </div> */}
@@ -44,10 +46,18 @@ export default function App() {
             </li>
             <li>
               <NavLink
-                to="/placeholder"
+                to="/stopwatch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Placeholder
+                Stopwatch
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/whtimer"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                Wim Hoff Breathing
               </NavLink>
             </li>
           </ul>
@@ -57,3 +67,7 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+// TODO
+// sounds on and off
+// light and dark themes function
