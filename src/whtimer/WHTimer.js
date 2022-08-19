@@ -194,9 +194,7 @@ export default function WHTimer() {
       </span>
       {/* Outputs */}
       <div
-        // className="outputsContainer"
         className={`outputsContainer ${
-          // isRunning ? WHTimerCSS.outputCircle : ""
           (isRunning && isBreathing && WHTimerCSS.outputCircle) ||
           (isRunning && isHolding && WHTimerCSS.breathout) ||
           (isRunning && isResting && WHTimerCSS.breathin)
@@ -219,13 +217,13 @@ export default function WHTimer() {
         {isBreathing && isRunning && (
           <>
             <span>Breath in...</span>
-            <span>Breath out...</span>
             <span className="timer">{secTohuman(breathCountdown)}</span>
+            <span>Breath out...</span>
           </>
         )}
         {isResting && (
           <>
-            <span>Breath in and rest</span>
+            <span>Breath in and hold</span>
             <span className="timer">{secTohuman(restCountdown)}</span>
           </>
         )}
@@ -253,13 +251,6 @@ export default function WHTimer() {
 // [x] 3. When Countdown = 0 => start Timer from 0 to Buttton(stop breathold) click.
 // [x] 4. Countdown from Input#2 to 0.
 // [ ] 5. Repeat function until Button(finish) click
-
-//  states:
-// [x]  1. isRunning, isBreathing, isHolding, isResting
-// [ ]  2. breathCountdown, breathHoldTimer, restCountdown, scoreObject?(on start set times on finish add breathold score => store in array) ### OUTPUTS
-// [ ]  3. declaredRestCountdown, declaredBreathCountdown ### INPUTS
-// [ ]  4. handleStart, handleStopBreathHold, handleFinish ### CLICKS
-// [ ]
 
 // ideas:
 //  1. breathing rate corelated with animation repeat tempo (breath in and out command)
