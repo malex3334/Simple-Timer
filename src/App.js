@@ -13,6 +13,8 @@ let activeStyle = {
 };
 
 export default function App() {
+  const date = new Date().toISOString().slice(0, 4);
+
   return (
     <BrowserRouter>
       <div className="container">
@@ -65,6 +67,11 @@ export default function App() {
           </ul>
         </div>
         {/*  */}
+        <div className="footer">
+          <a href="https://github.com/malex3334" target="_blank">
+            Copyrights M.A. {date}
+          </a>
+        </div>
       </div>
     </BrowserRouter>
   );

@@ -92,11 +92,6 @@ export default function WHTimer() {
       }
     }
 
-    console.log("oddychaj" + breathCountdown);
-    console.log("wstrzymaj" + breathHoldTimer);
-    console.log("rest" + restCountdown);
-    console.log(isHolding);
-
     return () => {
       clearInterval(breathTimer);
       clearInterval(holdTimer);
