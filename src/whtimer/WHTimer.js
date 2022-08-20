@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { secTohuman, editTimers, updateValues } from "../utils/TimerFunctions";
 import WHTimerCSS from "./WHTimer.module.css";
-import useSound from "use-sound";
-// import testAudio from "../audio/audio.WAV";
-
-const sound = new Audio("https://bigsoundbank.com/UPLOAD/wav/2363.wav");
 
 export default function WHTimer() {
-  const [play] = useSound(sound);
-
   const [defaultValues, setDefaultValeus] = useState({
     breathingTime: 30,
     restTime: 15,
@@ -43,7 +37,6 @@ export default function WHTimer() {
       setBreathHoldTimer(0);
       setIsRunning(true);
       setIsBreathing(false);
-      play();
     } else {
       setIsRunning(false);
       setIsHolding(false);
