@@ -131,7 +131,7 @@ li a {
 input,
 input:disabled {
   font-size: 18px;
-  width: 4ch;
+  width: 5ch;
   padding: 1ch;
   text-align: center;
   border: none;
