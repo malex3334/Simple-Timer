@@ -29,7 +29,7 @@ export default function StopWatch() {
   }, [handleStart]);
 
   return (
-    <div className="fadeIn">
+    <div className="card fadeIn">
       <h2>Stopwatch</h2>
       <div className="inputContainer">
         <div className="inputControl">

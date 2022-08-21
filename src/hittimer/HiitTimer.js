@@ -94,7 +94,7 @@ export default function HiitTimer() {
   }, [isRunning, time, setTime, rest, rounds, setRounds]);
 
   return (
-    <div className="fadeIn">
+    <div className="card fadeIn">
       <h2>HIIT Timer!</h2>
 
       <div className={HiitCSS.inputContainer}>

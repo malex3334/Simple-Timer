@@ -114,7 +114,7 @@ export default function WHTimer() {
   ]);
 
   return (
-    <div className="fadeIn">
+    <div className="card fadeIn">
       <h2>Wim Hoff Breathing Timer</h2>
       <div className="inputContainer">
         <div className="inputControl">
