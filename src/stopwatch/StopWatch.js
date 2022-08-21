@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { secTohuman, editTimers, updateValues } from "../utils/TimerFunctions";
 
+const sound = new Audio(
+  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b08b6e711.mp3?filename=ship-bell-single-ring-81833.mp3"
+);
+
 export default function StopWatch() {
   const [defaultValues, setDefaultValues] = useState({ time: 30 });
   const [isRunning, setIsRunning] = useState(false);
@@ -8,8 +12,15 @@ export default function StopWatch() {
   const [declaredTime, setDeclaredTime] = useState(defaultValues.time);
 
   const handleStart = function () {
+    sound.play();
     setTimer(declaredTime);
     isRunning ? setIsRunning(false) : setIsRunning(true);
+    if (isRunning) {
+      setIsRunning(false);
+    } else {
+      setIsRunning(true);
+      sound.play();
+    }
   };
 
   let interval;
@@ -22,6 +33,7 @@ export default function StopWatch() {
       if (timer <= 0) {
         clearInterval(interval);
         setIsRunning(false);
+        sound.play();
       }
     }
 

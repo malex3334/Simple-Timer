@@ -3,14 +3,9 @@ import "../style.css";
 import { secTohuman, editTimers, updateValues } from "../utils/TimerFunctions";
 import HiitCSS from "./HiitTimer.module.css";
 
-const startSound = new Audio(
+const sound = new Audio(
   "https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b08b6e711.mp3?filename=ship-bell-single-ring-81833.mp3"
 );
-
-const playSound = function () {
-  startSound.volume = 0.8;
-  startSound.play();
-};
 
 export default function HiitTimer() {
   const [defaultValue, setDefaultValue] = useState({
@@ -19,7 +14,7 @@ export default function HiitTimer() {
     rounds: 5,
   });
 
-  const [sound, setSound] = useState(true);
+  // const [sound, setSound] = useState(true);
   const [time, setTime] = useState(defaultValue.time);
   const [rest, setRest] = useState(10);
   const [rounds, setRounds] = useState(5);
@@ -38,7 +33,15 @@ export default function HiitTimer() {
     setTime(declaredTime);
     setRest(declaredRest);
     setRounds(declaredRounds);
-    isRunning ? setIsRunning(false) : setIsRunning(true);
+
+    if (isRunning) {
+      setIsRunning(false);
+    } else {
+      setIsRunning(true);
+      sound.play();
+    }
+
+    // isRunning ? setIsRunning(false) : setIsRunning(true);
   };
 
   const handleReset = function () {
@@ -57,6 +60,9 @@ export default function HiitTimer() {
       // if ((isRunning && time === 0) || rest === 0) {
       //   sound ? playSound() : null;
       // }
+      if (time === 0) {
+        sound.play();
+      }
 
       if (time <= 0) {
         // clearInterval(interval);
@@ -74,12 +80,14 @@ export default function HiitTimer() {
             setTime(declaredTime);
             updateValues(setRounds);
             setRest(declaredRest);
+            sound.play();
           }
         }
 
         if (rounds === 0) {
           clearInterval(interval);
           setIsRunning(false);
+          sound.play();
         }
       }
     } else {
