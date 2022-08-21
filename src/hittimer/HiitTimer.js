@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../style.css";
-import { secTohuman, editTimers, updateValues } from "../utils/TimerFunctions";
+import {
+  secTohuman,
+  editTimers,
+  updateValues,
+  playSound,
+} from "../utils/TimerFunctions";
 import HiitCSS from "./HiitTimer.module.css";
-
-const sound = new Audio(
-  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b08b6e711.mp3?filename=ship-bell-single-ring-81833.mp3"
-);
 
 export default function HiitTimer() {
   const [defaultValue, setDefaultValue] = useState({
@@ -38,7 +39,8 @@ export default function HiitTimer() {
       setIsRunning(false);
     } else {
       setIsRunning(true);
-      sound.play();
+      //  playSound();;
+      playSound();
     }
 
     // isRunning ? setIsRunning(false) : setIsRunning(true);
@@ -61,7 +63,7 @@ export default function HiitTimer() {
       //   sound ? playSound() : null;
       // }
       if (time === 0) {
-        sound.play();
+        playSound();
       }
 
       if (time <= 0) {
@@ -80,14 +82,14 @@ export default function HiitTimer() {
             setTime(declaredTime);
             updateValues(setRounds);
             setRest(declaredRest);
-            sound.play();
+            playSound();
           }
         }
 
         if (rounds === 0) {
           clearInterval(interval);
           setIsRunning(false);
-          sound.play();
+          playSound();
         }
       }
     } else {

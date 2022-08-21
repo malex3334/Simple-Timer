@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { secTohuman, editTimers, updateValues } from "../utils/TimerFunctions";
+import {
+  secTohuman,
+  editTimers,
+  updateValues,
+  playSound,
+} from "../utils/TimerFunctions";
 import WHTimerCSS from "./WHTimer.module.css";
-
-const sound = new Audio(
-  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b08b6e711.mp3?filename=ship-bell-single-ring-81833.mp3"
-);
 
 export default function WHTimer() {
   const [defaultValues, setDefaultValeus] = useState({
@@ -41,7 +42,7 @@ export default function WHTimer() {
       setBreathHoldTimer(0);
       setIsRunning(true);
       setIsBreathing(false);
-      sound.play();
+      playSound();
     } else {
       setIsRunning(false);
       setIsHolding(false);
@@ -73,7 +74,7 @@ export default function WHTimer() {
         clearInterval(breathTimer);
         setIsHolding(true);
         setBreathCountdown(declaredBreathCountdown);
-        sound.play();
+        playSound();
       }
 
       if (isHolding) {
@@ -95,7 +96,7 @@ export default function WHTimer() {
         setIsBreathing(true);
         setRestCountdown(declaredRestCountdown);
         setRounds((prev) => prev + 1);
-        sound.play();
+        playSound();
       }
     }
 
