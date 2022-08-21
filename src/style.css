@@ -240,7 +240,7 @@ button:active {
     background-color: rgba(132, 132, 132, 0.945);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 25px 25px 50px 25px;
+    padding: 25px 25px 10px 25px;
     max-width: 40%;
     z-index: -1;
     min-height: 75vh;
