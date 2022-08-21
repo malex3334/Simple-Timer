@@ -23,6 +23,46 @@ p {
   color: rgb(238, 236, 236, 0.9);
 }
 
+li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+/* testing  */
+
+input,
+input:disabled {
+  font-size: 18px;
+  width: 5ch;
+  padding: 1ch;
+  text-align: center;
+  border: none;
+  background-color: orangered;
+  color: white;
+
+  -webkit-appearance: none;
+  border-radius: 5px;
+  -webkit-text-fill-color: #ffffff;
+  opacity: 1; /* required on iOS */
+}
+
+h2 {
+  background-color: rgba(255, 68, 0, 1);
+  margin: 10px 0 30px 0;
+  padding: 0.3em 0.75em;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+
+button {
+  color: white;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .container {
   /* padding: 25px; */
   color: white;
@@ -57,9 +97,6 @@ p {
   padding: 0;
   align-items: center;
   justify-content: space-evenly;
-  /* position: fixed;
-  width: 100%;
-  bottom:0; */
   gap: 25px;
   background-color: rgba(255, 68, 0, 1);
 }
@@ -76,70 +113,6 @@ p {
 
 .fadeIn {
   animation: fadeIn 0.5s ease-in-out;
-}
-
-li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-}
-
-/* Animations */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  75% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* testing  */
-
-input,
-input:disabled {
-  font-size: 18px;
-  width: 5ch;
-  padding: 1ch;
-  text-align: center;
-  border: none;
-  background-color: orangered;
-  color: white;
-
-  -webkit-appearance: none;
-  border-radius: 5px;
-  -webkit-text-fill-color: #ffffff;
-  opacity: 1; /* required on iOS */
-}
-
-h2 {
-  /* background-color: rgba(255, 68, 0, 0.75); */
-  background-color: rgba(255, 68, 0, 1);
-  margin: 10px 0 30px 0;
-  padding: 0.3em 0.75em;
-  letter-spacing: 3px;
-  font-weight: 100;
-}
-
-button {
-  color: white;
-  font-size: 18px;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 .inputContainer {
@@ -229,6 +202,31 @@ button:active {
   opacity: 1;
 }
 
+/* ### ANIMATIONS ### */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ### MEDIA QUERIES ### */
+
 @media (min-width: 600px) {
   h2 {
     border-radius: 8px;
@@ -236,7 +234,6 @@ button:active {
 
   .container {
     margin: 25px auto;
-    /* background-color: rgba(255, 255, 255, 0.945); */
     background-color: rgba(132, 132, 132, 0.945);
     backdrop-filter: blur(10px);
     border-radius: 12px;
@@ -247,11 +244,8 @@ button:active {
   }
 
   body {
-    /* background-color: rgba(0, 0, 0, 0.212); */
     background: linear-gradient(60deg, #29323c 0%, #485563 100%);
-    /* background-image: url("https://images.unsplash.com/photo-1434596922112-19c563067271?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
-    background-size: cover;
-    background-position: 110%; */
+    min-height: 100vh;
   }
 }
 
