@@ -11,7 +11,7 @@ export const secTohuman = function (seconds) {
 
 // add and substract time values - buttons
 export const editTimers = function (target, operation, step, min) {
-  switch ((operation = null)) {
+  switch (operation) {
     case "subs":
       target((prev) => (prev > min ? prev - step : min));
       break;
