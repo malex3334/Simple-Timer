@@ -100,7 +100,7 @@ export default function App() {
                 to="/whtimer"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Wim Hoff Breathing
+                W.Hoff Breathing
               </NavLink>
             </li>
           </ul>
