@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "../style.css";
+import React, { useState, useEffect } from 'react';
+import '../style.css';
 import {
   secTohuman,
   editTimers,
   updateValues,
   playSound,
-} from "../utils/TimerFunctions";
-import HiitCSS from "./HiitTimer.module.css";
+} from '../utils/TimerFunctions';
+import HiitCSS from './HiitTimer.module.css';
 
-export default function HiitTimer() {
+export default function HiitTimer({ allowSound }) {
   const [defaultValue, setDefaultValue] = useState({
     time: 20,
     rest: 10,
@@ -21,7 +21,7 @@ export default function HiitTimer() {
   const [rounds, setRounds] = useState(5);
   const [isRunning, setIsRunning] = useState(false);
   const [isResting, setIsResting] = useState(false);
-  const [finish, setFinish] = useState("work");
+  const [finish, setFinish] = useState('work');
   const [declaredTime, setDeclaredTime] = useState(defaultValue.time);
   const [declaredRest, setDeclaredRest] = useState(defaultValue.rest);
   const [declaredRounds, setDeclaredDounds] = useState(defaultValue.rounds);
@@ -39,8 +39,8 @@ export default function HiitTimer() {
       setIsRunning(false);
     } else {
       setIsRunning(true);
-      //  playSound();;
-      playSound();
+      //  playSound(allowSound);;
+      playSound(allowSound);
     }
 
     // isRunning ? setIsRunning(false) : setIsRunning(true);
@@ -54,16 +54,16 @@ export default function HiitTimer() {
 
   useEffect(() => {
     if (isRunning && rounds > 0) {
-      setFinish("WORK!");
+      setFinish('WORK!');
       interval = setInterval(() => {
         updateValues(setTime);
       }, 1000);
 
       // if ((isRunning && time === 0) || rest === 0) {
-      //   sound ? playSound() : null;
+      //   sound ? playSound(allowSound) : null;
       // }
       if (time === 0) {
-        playSound();
+        playSound(allowSound);
       }
 
       if (time <= 0) {
@@ -72,7 +72,7 @@ export default function HiitTimer() {
 
         if (rounds >= 1) {
           setIsResting(true);
-          setFinish("REST!");
+          setFinish('REST!');
           resInterval = setInterval(() => {
             updateValues(setRest);
           }, 1000);
@@ -82,19 +82,19 @@ export default function HiitTimer() {
             setTime(declaredTime);
             updateValues(setRounds);
             setRest(declaredRest);
-            playSound();
+            playSound(allowSound);
           }
         }
 
         if (rounds === 0) {
           clearInterval(interval);
           setIsRunning(false);
-          playSound();
+          playSound(allowSound);
         }
       }
     } else {
       setIsRunning(false);
-      setFinish("Good Job!");
+      setFinish('Good Job!');
     }
 
     return () => {
@@ -105,14 +105,14 @@ export default function HiitTimer() {
 
   return (
     <div className="card fadeIn">
-      <h2>HIIT Timer!</h2>
+      <h2 onClick={() => console.log(allowSound)}>HIIT Timer!</h2>
 
       <div className={HiitCSS.inputContainer}>
         {/* timer */}
         <div className={HiitCSS.inputControl}>
           <label>Time:</label>
           <div className={HiitCSS.buttonsContainer}>
-            <button onClick={() => editTimers(setDeclaredTime, "subs", 5, 5)}>
+            <button onClick={() => editTimers(setDeclaredTime, 'subs', 5, 5)}>
               -
             </button>
             <input
@@ -135,7 +135,7 @@ export default function HiitTimer() {
           <div className={HiitCSS.inputControl}>
             <label>Rest:</label>
             <div className={HiitCSS.buttonsContainer}>
-              <button onClick={() => editTimers(setDeclaredRest, "subs", 5, 5)}>
+              <button onClick={() => editTimers(setDeclaredRest, 'subs', 5, 5)}>
                 -
               </button>
               <input
@@ -161,7 +161,7 @@ export default function HiitTimer() {
             <label>Rounds:</label>
             <div className={HiitCSS.buttonsContainer}>
               <button
-                onClick={() => editTimers(setDeclaredDounds, "subs", 1, 1)}
+                onClick={() => editTimers(setDeclaredDounds, 'subs', 1, 1)}
               >
                 -
               </button>
@@ -188,11 +188,11 @@ export default function HiitTimer() {
           onClick={handleClick}
           style={
             !isRunning
-              ? { borderColor: "greenyellow" }
-              : { borderColor: "orangered" }
+              ? { borderColor: 'greenyellow' }
+              : { borderColor: 'orangered' }
           }
         >
-          {!isRunning ? "start" : "stop"}
+          {!isRunning ? 'start' : 'stop'}
         </button>
         <button onClick={handleReset}>reset</button>
       </div>
@@ -201,9 +201,9 @@ export default function HiitTimer() {
         style={
           isRunning
             ? {
-                borderColor: "greenyellow",
-                color: "white",
-                animation: "pulse 1s infinite linear",
+                borderColor: 'greenyellow',
+                color: 'white',
+                animation: 'pulse 1s infinite linear',
               }
             : null
         }

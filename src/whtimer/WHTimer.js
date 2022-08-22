@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+// import Modal from '../components/Modal';
+import Modal from 'react-bootstrap/Modal';
 import {
   secTohuman,
   editTimers,
   updateValues,
   playSound,
-} from "../utils/TimerFunctions";
-import WHTimerCSS from "./WHTimer.module.css";
+} from '../utils/TimerFunctions';
+import WHTimerCSS from './WHTimer.module.css';
 
-export default function WHTimer() {
+export default function WHTimer({ allowSound }) {
   const [defaultValues, setDefaultValeus] = useState({
     breathingTime: 30,
     restTime: 15,
@@ -42,7 +44,7 @@ export default function WHTimer() {
       setBreathHoldTimer(0);
       setIsRunning(true);
       setIsBreathing(false);
-      playSound();
+      playSound(allowSound);
     } else {
       setIsRunning(false);
       setIsHolding(false);
@@ -74,7 +76,7 @@ export default function WHTimer() {
         clearInterval(breathTimer);
         setIsHolding(true);
         setBreathCountdown(declaredBreathCountdown);
-        playSound();
+        playSound(allowSound);
       }
 
       if (isHolding) {
@@ -96,7 +98,7 @@ export default function WHTimer() {
         setIsBreathing(true);
         setRestCountdown(declaredRestCountdown);
         setRounds((prev) => prev + 1);
-        playSound();
+        playSound(allowSound);
       }
     }
 
@@ -130,7 +132,7 @@ export default function WHTimer() {
           <div className="buttonsContainer">
             <button
               onClick={() =>
-                editTimers(setDeclaredBreathCountdown, "subs", 5, 5)
+                editTimers(setDeclaredBreathCountdown, 'subs', 5, 5)
               }
             >
               -
@@ -146,7 +148,7 @@ export default function WHTimer() {
               }
             />
             <button
-              onClick={() => editTimers(setDeclaredBreathCountdown, "add", 5)}
+              onClick={() => editTimers(setDeclaredBreathCountdown, 'add', 5)}
             >
               +
             </button>
@@ -156,7 +158,7 @@ export default function WHTimer() {
           <label>Rest time:</label>
           <div className="buttonsContainer">
             <button
-              onClick={() => editTimers(setDeclaredRestcountdown, "subs", 5, 5)}
+              onClick={() => editTimers(setDeclaredRestcountdown, 'subs', 5, 5)}
             >
               -
             </button>
@@ -171,7 +173,7 @@ export default function WHTimer() {
               }
             />
             <button
-              onClick={() => editTimers(setDeclaredRestcountdown, "add", 5, 5)}
+              onClick={() => editTimers(setDeclaredRestcountdown, 'add', 5, 5)}
             >
               +
             </button>
@@ -181,16 +183,16 @@ export default function WHTimer() {
       {/* buttons */}
       <div className="startButtonsContainer">
         <button onClick={() => handleStart()}>
-          {isRunning ? "stop" : "start"}
+          {isRunning ? 'stop' : 'start'}
         </button>
         <button>finish</button>
       </div>
       <span
         style={{
-          fontSize: "24px",
-          display: "block",
-          textAlign: "center",
-          margin: "15px auto",
+          fontSize: '24px',
+          display: 'block',
+          textAlign: 'center',
+          margin: '15px auto',
         }}
       >
         Rounds: {rounds}
@@ -242,6 +244,10 @@ export default function WHTimer() {
           </>
         )}
       </div>
+      {/* <Modal>
+        <h2>More on Wim Hoff Method:</h2>
+        <p>Wim Hoff Breathing method lorem*3</p>
+      </Modal> */}
     </div>
   );
 }

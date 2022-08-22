@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   secTohuman,
   editTimers,
   updateValues,
   playSound,
-} from "../utils/TimerFunctions";
+} from '../utils/TimerFunctions';
 
-export default function StopWatch() {
+export default function StopWatch({ allowSound }) {
   const [defaultValues, setDefaultValues] = useState({ time: 30 });
   const [isRunning, setIsRunning] = useState(false);
   const [timer, setTimer] = useState(defaultValues.time);
@@ -19,7 +19,7 @@ export default function StopWatch() {
       setIsRunning(false);
     } else {
       setIsRunning(true);
-      playSound();
+      playSound(allowSound);
     }
   };
 
@@ -33,7 +33,7 @@ export default function StopWatch() {
       if (timer <= 0) {
         clearInterval(interval);
         setIsRunning(false);
-        playSound();
+        playSound(allowSound);
       }
     }
 
@@ -47,7 +47,7 @@ export default function StopWatch() {
         <div className="inputControl">
           <label>Set time</label>
           <div className="buttonsContainer">
-            <button onClick={() => editTimers(setDeclaredTime, "subs", 5, 5)}>
+            <button onClick={() => editTimers(setDeclaredTime, 'subs', 5, 5)}>
               -
             </button>
             <input
@@ -59,7 +59,7 @@ export default function StopWatch() {
                 setDeclaredTime(e.target.value) && setTimer(e.target.value)
               }
             />
-            <button onClick={() => editTimers(setDeclaredTime, "add", 5)}>
+            <button onClick={() => editTimers(setDeclaredTime, 'add', 5)}>
               +
             </button>
           </div>
@@ -71,11 +71,11 @@ export default function StopWatch() {
           onClick={() => handleStart()}
           style={
             !isRunning
-              ? { borderColor: "greenyellow" }
-              : { borderColor: "orangered" }
+              ? { borderColor: 'greenyellow' }
+              : { borderColor: 'orangered' }
           }
         >
-          {isRunning ? "stop" : "start"}
+          {isRunning ? 'stop' : 'start'}
         </button>
         <button
           onClick={() =>
@@ -90,8 +90,8 @@ export default function StopWatch() {
       <div
         style={
           isRunning
-            ? { borderColor: "greenyellow" }
-            : { borderColor: "orangered" }
+            ? { borderColor: 'greenyellow' }
+            : { borderColor: 'orangered' }
         }
         className="outputsContainer"
         onClick={() => handleStart()}
