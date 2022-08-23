@@ -35,6 +35,10 @@ const contentObj = {
       breathHoldStop: "TUTAJ by zakończyć",
       breathInandHold: "Wdech i wstrzymaj",
     },
+    about: {
+      title: `O aplikacji`,
+      paragraph: ` Aplikacja powstała z myślą o prostym i użytecznym narzędziu od kontrolowania swojego treningu. Celem była prostota i funkcjonalność. Chętnie przyjmę pomysły i sugestie!`,
+    },
   },
   // english
   eng: {
@@ -71,6 +75,12 @@ const contentObj = {
       breathHold: "Breathold time...",
       breathHoldStop: "Click HERE to stop",
       breathInandHold: "Breath IN and hold",
+    },
+    about: {
+      title: `About this app`,
+      paragraph: `    This app was made to meet my needs in terms of sport timers. I hope you
+      like it too. My main goal was to keep everything simple and provide
+      basic set of timers such as Tabata / HIIT Timer.`,
     },
   },
 };

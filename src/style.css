@@ -16,6 +16,20 @@ h1 {
   font-size: 36px;
 }
 
+h2 {
+  background-color: rgba(255, 68, 0, 1);
+  margin: 10px 0 30px 0;
+  padding: 0.3em 0.75em;
+  letter-spacing: 3px;
+  font-weight: 100;
+  width: 100%;
+  display: block;
+}
+h5 {
+  margin-top: 10px;
+  color: white;
+}
+
 p {
   padding: 15px;
   line-height: 1.7;
@@ -34,7 +48,13 @@ li a:hover {
   color: white;
 }
 
-/* testing  */
+button {
+  color: white;
+  font-size: 18px;
+  background: none;
+  border: 3px solid none;
+  cursor: pointer;
+}
 
 input,
 input:disabled {
@@ -84,28 +104,6 @@ option {
 
 .allowSound:checked {
   background-color: orangered;
-}
-
-h2 {
-  background-color: rgba(255, 68, 0, 1);
-  margin: 10px 0 30px 0;
-  padding: 0.3em 0.75em;
-  letter-spacing: 3px;
-  font-weight: 100;
-  width: 100%;
-  display: block;
-}
-h5 {
-  margin-top: 10px;
-  color: white;
-}
-
-button {
-  color: white;
-  font-size: 18px;
-  background: none;
-  border: 3px solid none;
-  cursor: pointer;
 }
 
 .container {
@@ -270,11 +268,11 @@ button:active {
 }
 
 .modalHeader {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: normal;
   padding: 0.5em;
   background: orangered;
-  color: white;
+  color: rgb(238, 236, 236, 0.9);
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid white;
@@ -282,7 +280,7 @@ button:active {
 
 .modalBody {
   background: linear-gradient(60deg, #29323c 0%, #485563 100%);
-  color: rgb(238, 236, 236, 0.9);
+  color: rgb(238, 236, 236, 1);
   border-bottom: 2px solid white;
 }
 
@@ -307,6 +305,7 @@ button:active {
   margin: 1em auto 0.5em auto;
   letter-spacing: 1.2px;
   font-size: 21px;
+  color: rgb(238, 236, 236, 1);
 }
 
 .modal span {
@@ -341,6 +340,10 @@ button:active {
 /* ### MEDIA QUERIES ### */
 
 @media (min-width: 600px) {
+  body {
+    background: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    min-height: 100vh;
+  }
   h1 {
     font-size: 42px;
   }
@@ -365,9 +368,8 @@ button:active {
     min-height: 75vh;
   }
 
-  body {
-    background: linear-gradient(60deg, #29323c 0%, #485563 100%);
-    min-height: 100vh;
+  .modalHeader {
+    font-size: 32px;
   }
 }
 
