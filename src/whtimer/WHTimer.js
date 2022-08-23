@@ -9,7 +9,9 @@ import {
   playSound,
 } from "../utils/TimerFunctions";
 import WHTimerCSS from "./WHTimer.module.css";
+
 import contentObj from "../language";
+
 
 export default function WHTimer({ allowSound, language }) {
   const [defaultValues, setDefaultValeus] = useState({
@@ -140,6 +142,7 @@ export default function WHTimer({ allowSound, language }) {
       <div className="inputContainer">
         <div className="inputControl">
           <label>{contentObj[language].whTimer.breathingTime}</label>
+
           <div className="buttonsContainer">
             <button
               onClick={() =>
@@ -167,6 +170,7 @@ export default function WHTimer({ allowSound, language }) {
         </div>
         <div className="inputControl">
           <label>{contentObj[language].whTimer.restTime}</label>
+
           <div className="buttonsContainer">
             <button
               onClick={() => editTimers(setDeclaredRestcountdown, "subs", 5, 5)}
@@ -203,6 +207,7 @@ export default function WHTimer({ allowSound, language }) {
           fontSize: "24px",
           display: "block",
           textAlign: "center",
+
           margin: "10px auto 1px auto",
         }}
       >
@@ -210,6 +215,7 @@ export default function WHTimer({ allowSound, language }) {
       </span>
       {/* Outputs */}
       <div
+        style={{ marginTop: "0px" }}
         className={`outputsContainer ${
           (isRunning && isBreathing && WHTimerCSS.outputCircle) ||
           (isRunning && isHolding && WHTimerCSS.breathout) ||

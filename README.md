@@ -4,8 +4,8 @@
 
 *https://simple-timers.netlify.app*
 
-<!--
-![Recording 2022-08-08 at 09 43 36](https://user-images.githubusercontent.com/99325577/183366656-73fd4d42-1a4e-4968-8703-a64ce67f1b2c.gif) -->
+![Recording 2022-08-22 at 23 07 43](https://user-images.githubusercontent.com/99325577/186019507-69cd0355-66d2-46f9-8c50-859d531f8f66.gif)
+
 
 ## 🛠 Features:
 
