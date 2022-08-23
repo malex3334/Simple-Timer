@@ -4,9 +4,11 @@ import HiitTimer from "./hittimer/HiitTimer";
 import WHTimer from "./whtimer/WHTimer";
 import Stopwatch from "./stopwatch/StopWatch";
 import About from "./About";
+import Options from "./components/Options";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import soundIcon from "./utils/SoundIcon.svg";
-import soundOffIcon from "./utils/SoundOffIcon.svg";
+import soundIcon from "./assets/SoundIcon.svg";
+import soundOffIcon from "./assets/SoundOffIcon.svg";
+import contentObj from "./language";
 
 let activeStyle = {
   borderBottom: "2px solid white",
@@ -14,6 +16,7 @@ let activeStyle = {
 };
 
 export default function App() {
+  const [language, setLanguage] = useState("pl");
   const date = new Date().toISOString().slice(0, 4);
 
   const [allowSound, setAllowSound] = useState(
@@ -32,38 +35,49 @@ export default function App() {
   return (
     <BrowserRouter>
       <div className="container">
-        <div className="allowSoundContainer">
-          {allowSound ? (
-            <img
-              className="icon"
-              src={soundIcon}
-              alt="sound on icon"
-              onClick={() => {
-                setAllowSound(false);
-              }}
-            />
-          ) : (
-            <img
-              className="icon"
-              alt="sound off icon"
-              src={soundOffIcon}
-              onClick={() => setAllowSound(true)}
-            />
-          )}
+        <div className="header">
+          <div className="allowSoundContainer">
+            {allowSound ? (
+              <img
+                className="icon"
+                src={soundIcon}
+                alt="sound on icon"
+                onClick={() => {
+                  setAllowSound(false);
+                }}
+              />
+            ) : (
+              <img
+                className="icon"
+                alt="sound off icon"
+                src={soundOffIcon}
+                onClick={() => setAllowSound(true)}
+              />
+            )}
+          </div>
+          <h1>Simple Timers</h1>
+          <div className="optionsContainer">
+            <Options language={language} setLanguage={setLanguage} />
+          </div>
         </div>
-        <h1>Simple Timers</h1>
         {/* <div className="outputs"> */}
         <Routes>
-          <Route path="/" element={<HiitTimer allowSound={allowSound} />} />
-          <Route path="/hiit" element={<HiitTimer allowSound={allowSound} />} />
+          <Route
+            path="/"
+            element={<HiitTimer language={language} allowSound={allowSound} />}
+          />
+          <Route
+            path="/hiit"
+            element={<HiitTimer language={language} allowSound={allowSound} />}
+          />
           <Route
             path="/whtimer"
-            element={<WHTimer allowSound={allowSound} />}
+            element={<WHTimer language={language} allowSound={allowSound} />}
           />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About language={language} />} />
           <Route
             path="/stopwatch"
-            element={<Stopwatch allowSound={allowSound} />}
+            element={<Stopwatch language={language} allowSound={allowSound} />}
           />
         </Routes>
         {/* </div> */}
@@ -76,7 +90,7 @@ export default function App() {
                 to="/about"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                About
+                {contentObj[language].nav.about}
               </NavLink>
             </li>
             <li>
@@ -92,7 +106,7 @@ export default function App() {
                 to="/stopwatch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Stopwatch
+                {contentObj[language].nav.stopwatch}
               </NavLink>
             </li>
             <li>
@@ -100,7 +114,7 @@ export default function App() {
                 to="/whtimer"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                W.Hoff Breathing
+                {contentObj[language].nav.whtimer}
               </NavLink>
             </li>
           </ul>
