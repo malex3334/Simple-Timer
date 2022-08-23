@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // import Modal from '../components/Modal';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Instructions from './Instructions';
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Instructions from "./Instructions";
 import {
   secTohuman,
   editTimers,
   updateValues,
   playSound,
-} from '../utils/TimerFunctions';
-import WHTimerCSS from './WHTimer.module.css';
-import contentObj from '../language';
+} from "../utils/TimerFunctions";
+import WHTimerCSS from "./WHTimer.module.css";
+import contentObj from "../language";
 
 export default function WHTimer({ allowSound, language }) {
   const [defaultValues, setDefaultValeus] = useState({
@@ -144,7 +144,7 @@ export default function WHTimer({ allowSound, language }) {
           <div className="buttonsContainer">
             <button
               onClick={() =>
-                editTimers(setDeclaredBreathCountdown, 'subs', 5, 5)
+                editTimers(setDeclaredBreathCountdown, "subs", 5, 5)
               }
             >
               -
@@ -160,7 +160,7 @@ export default function WHTimer({ allowSound, language }) {
               }
             />
             <button
-              onClick={() => editTimers(setDeclaredBreathCountdown, 'add', 5)}
+              onClick={() => editTimers(setDeclaredBreathCountdown, "add", 5)}
             >
               +
             </button>
@@ -170,7 +170,7 @@ export default function WHTimer({ allowSound, language }) {
           <label>{contentObj[language].whTimer.restTime}</label>
           <div className="buttonsContainer">
             <button
-              onClick={() => editTimers(setDeclaredRestcountdown, 'subs', 5, 5)}
+              onClick={() => editTimers(setDeclaredRestcountdown, "subs", 5, 5)}
             >
               -
             </button>
@@ -185,7 +185,7 @@ export default function WHTimer({ allowSound, language }) {
               }
             />
             <button
-              onClick={() => editTimers(setDeclaredRestcountdown, 'add', 5, 5)}
+              onClick={() => editTimers(setDeclaredRestcountdown, "add", 5, 5)}
             >
               +
             </button>
@@ -195,16 +195,16 @@ export default function WHTimer({ allowSound, language }) {
       {/* buttons */}
       <div className="startButtonsContainer">
         <button onClick={() => handleStart()}>
-          {isRunning ? 'stop' : 'start'}
+          {isRunning ? "stop" : "start"}
         </button>
         <button>finish</button>
       </div>
       <span
         style={{
-          fontSize: '24px',
-          display: 'block',
-          textAlign: 'center',
-          margin: '10px auto 1px auto',
+          fontSize: "24px",
+          display: "block",
+          textAlign: "center",
+          margin: "10px auto 1px auto",
         }}
       >
         {contentObj[language].whTimer.rounds} {rounds}
@@ -233,38 +233,38 @@ export default function WHTimer({ allowSound, language }) {
         )}
         {isBreathing && isRunning && (
           <>
-            <span>Breath in...</span>
+            <span>{contentObj[language].whTimer.breathIn}</span>
             <span className="timer">{secTohuman(breathCountdown)}</span>
-            <span>Breath out...</span>
+            <span>{contentObj[language].whTimer.breathOut}</span>
           </>
         )}
         {isResting && (
           <>
-            <span>Breath in and hold</span>
+            <span>{contentObj[language].whTimer.breathInandHold}</span>
             <span className="timer">{secTohuman(restCountdown)}</span>
           </>
         )}
         {isHolding && (
           <>
-            <span>Breathold time</span>
+            <span>{contentObj[language].whTimer.breathHold}</span>
             <span className="timer">
               {!isRunning
                 ? secTohuman(declaredBreathCountdown)
                 : secTohuman(breathHoldTimer)}
             </span>
-            <span>Click HERE to stop</span>
+            <span>{contentObj[language].whTimer.breathHoldStop}</span>
           </>
         )}
       </div>
       {/* <Instructions /> */}
       <button
         style={{
-          fontSize: '16px',
-          width: '16ch',
-          margin: '0 auto',
-          border: '3px solid white',
-          padding: '.5em .5em',
-          borderRadius: '8px',
+          fontSize: "16px",
+          width: "16ch",
+          margin: "0 auto",
+          border: "3px solid white",
+          padding: ".5em .5em",
+          borderRadius: "8px",
         }}
         className="instructionsBtn"
         onClick={() => openModal()}
