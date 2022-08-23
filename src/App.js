@@ -1,37 +1,41 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
-import HiitTimer from "./hittimer/HiitTimer";
-import WHTimer from "./whtimer/WHTimer";
-import Stopwatch from "./stopwatch/StopWatch";
-import About from "./About";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import soundIcon from "./utils/SoundIcon.svg";
-import soundOffIcon from "./utils/SoundOffIcon.svg";
+import React, { useState, useEffect } from 'react';
+import './style.css';
+import HiitTimer from './hittimer/HiitTimer';
+import WHTimer from './whtimer/WHTimer';
+import Stopwatch from './stopwatch/StopWatch';
+import About from './About';
+import Options from './components/Options';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import soundIcon from './utils/SoundIcon.svg';
+import soundOffIcon from './utils/SoundOffIcon.svg';
+import contentObj from './language';
 
 let activeStyle = {
-  borderBottom: "2px solid white",
-  padding: "0 2px 3px 2px",
+  borderBottom: '2px solid white',
+  padding: '0 2px 3px 2px',
 };
 
 export default function App() {
+  const [language, setLanguage] = useState('pl');
   const date = new Date().toISOString().slice(0, 4);
 
   const [allowSound, setAllowSound] = useState(
     // localStorage.getItem('sounds') ? JSON.parse(localStorage.getItem("sounds") : true)
-    !localStorage.getItem("sounds")
+    !localStorage.getItem('sounds')
       ? true
-      : JSON.parse(localStorage.getItem("sounds"))
+      : JSON.parse(localStorage.getItem('sounds'))
   );
   // const [allowSound, setAllowSound] = useState();
 
   console.log(allowSound);
   useEffect(() => {
-    localStorage.setItem("sounds", allowSound);
+    localStorage.setItem('sounds', allowSound);
   }, [allowSound, setAllowSound]);
 
   return (
     <BrowserRouter>
       <div className="container">
+        <Options language={language} setLanguage={setLanguage} />
         <div className="allowSoundContainer">
           {allowSound ? (
             <img
@@ -54,16 +58,22 @@ export default function App() {
         <h1>Simple Timers</h1>
         {/* <div className="outputs"> */}
         <Routes>
-          <Route path="/" element={<HiitTimer allowSound={allowSound} />} />
-          <Route path="/hiit" element={<HiitTimer allowSound={allowSound} />} />
+          <Route
+            path="/"
+            element={<HiitTimer language={language} allowSound={allowSound} />}
+          />
+          <Route
+            path="/hiit"
+            element={<HiitTimer language={language} allowSound={allowSound} />}
+          />
           <Route
             path="/whtimer"
-            element={<WHTimer allowSound={allowSound} />}
+            element={<WHTimer language={language} allowSound={allowSound} />}
           />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About language={language} />} />
           <Route
             path="/stopwatch"
-            element={<Stopwatch allowSound={allowSound} />}
+            element={<Stopwatch language={language} allowSound={allowSound} />}
           />
         </Routes>
         {/* </div> */}
@@ -76,7 +86,7 @@ export default function App() {
                 to="/about"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                About
+                {contentObj[language].nav.about}
               </NavLink>
             </li>
             <li>
@@ -92,7 +102,7 @@ export default function App() {
                 to="/stopwatch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Stopwatch
+                {contentObj[language].nav.stopwatch}
               </NavLink>
             </li>
             <li>
@@ -100,7 +110,7 @@ export default function App() {
                 to="/whtimer"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                W.Hoff Breathing
+                {contentObj[language].nav.whtimer}
               </NavLink>
             </li>
           </ul>

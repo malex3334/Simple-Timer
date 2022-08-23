@@ -6,7 +6,9 @@ import {
   playSound,
 } from '../utils/TimerFunctions';
 
-export default function StopWatch({ allowSound }) {
+import contentObj from '../language';
+
+export default function StopWatch({ allowSound, language }) {
   const [defaultValues, setDefaultValues] = useState({ time: 30 });
   const [isRunning, setIsRunning] = useState(false);
   const [timer, setTimer] = useState(defaultValues.time);
@@ -41,11 +43,11 @@ export default function StopWatch({ allowSound }) {
   }, [handleStart]);
 
   return (
-    <div className="card fadeIn">
-      <h2>Stopwatch</h2>
+    <div className="timerCard fadeIn">
+      <h2>{contentObj[language].stopwatch.title}</h2>
       <div className="inputContainer">
         <div className="inputControl">
-          <label>Set time</label>
+          <label>{contentObj[language].stopwatch.time}</label>
           <div className="buttonsContainer">
             <button onClick={() => editTimers(setDeclaredTime, 'subs', 5, 5)}>
               -

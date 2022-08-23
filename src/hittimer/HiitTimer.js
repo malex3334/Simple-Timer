@@ -7,8 +7,9 @@ import {
   playSound,
 } from '../utils/TimerFunctions';
 import HiitCSS from './HiitTimer.module.css';
+import contentObj from '../language';
 
-export default function HiitTimer({ allowSound }) {
+export default function HiitTimer({ allowSound, language }) {
   const [defaultValue, setDefaultValue] = useState({
     time: 20,
     rest: 10,
@@ -104,13 +105,15 @@ export default function HiitTimer({ allowSound }) {
   }, [isRunning, time, setTime, rest, rounds, setRounds]);
 
   return (
-    <div className="card fadeIn">
-      <h2 onClick={() => console.log(allowSound)}>HIIT Timer!</h2>
+    <div className="timerCards fadeIn">
+      <h2 onClick={() => console.log(allowSound)}>
+        {contentObj[language].HIIT.title}
+      </h2>
 
       <div className={HiitCSS.inputContainer}>
         {/* timer */}
         <div className={HiitCSS.inputControl}>
-          <label>Time:</label>
+          <label>{contentObj[language].HIIT.time}</label>
           <div className={HiitCSS.buttonsContainer}>
             <button onClick={() => editTimers(setDeclaredTime, 'subs', 5, 5)}>
               -
@@ -133,7 +136,7 @@ export default function HiitTimer({ allowSound }) {
         {/* rest */}
         <div className={HiitCSS.inputContainer}>
           <div className={HiitCSS.inputControl}>
-            <label>Rest:</label>
+            <label>{contentObj[language].HIIT.rest}</label>
             <div className={HiitCSS.buttonsContainer}>
               <button onClick={() => editTimers(setDeclaredRest, 'subs', 5, 5)}>
                 -
@@ -158,7 +161,7 @@ export default function HiitTimer({ allowSound }) {
         {/* rounds */}
         <div className={HiitCSS.inputContainer}>
           <div className={HiitCSS.inputControl}>
-            <label>Rounds:</label>
+            <label>{contentObj[language].HIIT.rounds}</label>
             <div className={HiitCSS.buttonsContainer}>
               <button
                 onClick={() => editTimers(setDeclaredDounds, 'subs', 1, 1)}
@@ -209,7 +212,7 @@ export default function HiitTimer({ allowSound }) {
         }
         onClick={handleClick}
       >
-        <span>Rounds left: {!isRunning ? declaredRounds : rounds}</span>
+        <span>{contentObj[language].HIIT.roundsLeft} {!isRunning ? declaredRounds : rounds}</span>
         {isResting ? (
           <span className={HiitCSS.timer}>
             {!isRunning ? secTohuman(declaredRest) : secTohuman(rest)}

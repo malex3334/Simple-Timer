@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import Modal from '../components/Modal';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import Instructions from './Instructions';
 import {
   secTohuman,
   editTimers,
@@ -8,12 +10,15 @@ import {
   playSound,
 } from '../utils/TimerFunctions';
 import WHTimerCSS from './WHTimer.module.css';
+import contentObj from '../language';
 
-export default function WHTimer({ allowSound }) {
+export default function WHTimer({ allowSound, language }) {
   const [defaultValues, setDefaultValeus] = useState({
     breathingTime: 30,
     restTime: 15,
   });
+
+  const [showModal, setShowModal] = useState(false);
 
   const [intervaltest, setintervaltest] = useState();
 
@@ -36,6 +41,13 @@ export default function WHTimer({ allowSound }) {
   let breathTimer;
   let holdTimer;
   let restTimer;
+
+  function closeModal() {
+    setShowModal(false);
+  }
+  function openModal() {
+    setShowModal(true);
+  }
 
   const handleStart = function () {
     // isRunning ? setIsRunning(false) : setIsRunning(true);
@@ -124,11 +136,11 @@ export default function WHTimer({ allowSound }) {
   ]);
 
   return (
-    <div className="card fadeIn">
-      <h2>Wim Hoff Breathing Timer</h2>
+    <div className="timerCard fadeIn">
+      <h2>{contentObj[language].whTimer.title}</h2>
       <div className="inputContainer">
         <div className="inputControl">
-          <label>Breathing time:</label>
+          <label>{contentObj[language].whTimer.breathingTime}</label>
           <div className="buttonsContainer">
             <button
               onClick={() =>
@@ -155,7 +167,7 @@ export default function WHTimer({ allowSound }) {
           </div>
         </div>
         <div className="inputControl">
-          <label>Rest time:</label>
+          <label>{contentObj[language].whTimer.restTime}</label>
           <div className="buttonsContainer">
             <button
               onClick={() => editTimers(setDeclaredRestcountdown, 'subs', 5, 5)}
@@ -192,10 +204,10 @@ export default function WHTimer({ allowSound }) {
           fontSize: '24px',
           display: 'block',
           textAlign: 'center',
-          margin: '15px auto',
+          margin: '10px auto 1px auto',
         }}
       >
-        Rounds: {rounds}
+        {contentObj[language].whTimer.rounds} {rounds}
       </span>
       {/* Outputs */}
       <div
@@ -215,8 +227,8 @@ export default function WHTimer({ allowSound }) {
         {/* timers etc */}
         {!isRunning && (
           <>
-            <span>Get ready..</span>
-            <span>Press start</span>
+            <span>{contentObj[language].whTimer.getReady}</span>
+            <span>{contentObj[language].whTimer.pressStart}</span>
           </>
         )}
         {isBreathing && isRunning && (
@@ -244,10 +256,29 @@ export default function WHTimer({ allowSound }) {
           </>
         )}
       </div>
-      {/* <Modal>
-        <h2>More on Wim Hoff Method:</h2>
-        <p>Wim Hoff Breathing method lorem*3</p>
-      </Modal> */}
+      {/* <Instructions /> */}
+      <button
+        style={{
+          fontSize: '16px',
+          width: '16ch',
+          margin: '0 auto',
+          border: '3px solid white',
+          padding: '.5em .5em',
+          borderRadius: '8px',
+        }}
+        className="instructionsBtn"
+        onClick={() => openModal()}
+      >
+        {contentObj[language].whTimer.about}
+      </button>
+      <div>
+        <Instructions
+          showModal={showModal}
+          setShowModal={setShowModal}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
+      </div>
     </div>
   );
 }
