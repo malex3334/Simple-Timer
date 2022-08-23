@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 // import Modal from '../components/Modal';
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
 import {
   secTohuman,
   editTimers,
   updateValues,
   playSound,
-} from '../utils/TimerFunctions';
-import WHTimerCSS from './WHTimer.module.css';
+} from "../utils/TimerFunctions";
+import WHTimerCSS from "./WHTimer.module.css";
 
 export default function WHTimer({ allowSound }) {
   const [defaultValues, setDefaultValeus] = useState({
@@ -127,12 +127,12 @@ export default function WHTimer({ allowSound }) {
     <div className="card fadeIn">
       <h2>Wim Hoff Breathing Timer</h2>
       <div className="inputContainer">
-        <div className="inputControl">
+        <div style={{ gap: "45px" }} className="inputControl">
           <label>Breathing time:</label>
           <div className="buttonsContainer">
             <button
               onClick={() =>
-                editTimers(setDeclaredBreathCountdown, 'subs', 5, 5)
+                editTimers(setDeclaredBreathCountdown, "subs", 5, 5)
               }
             >
               -
@@ -148,17 +148,17 @@ export default function WHTimer({ allowSound }) {
               }
             />
             <button
-              onClick={() => editTimers(setDeclaredBreathCountdown, 'add', 5)}
+              onClick={() => editTimers(setDeclaredBreathCountdown, "add", 5)}
             >
               +
             </button>
           </div>
         </div>
-        <div className="inputControl">
+        <div style={{ gap: "45px" }} className="inputControl">
           <label>Rest time:</label>
           <div className="buttonsContainer">
             <button
-              onClick={() => editTimers(setDeclaredRestcountdown, 'subs', 5, 5)}
+              onClick={() => editTimers(setDeclaredRestcountdown, "subs", 5, 5)}
             >
               -
             </button>
@@ -173,7 +173,7 @@ export default function WHTimer({ allowSound }) {
               }
             />
             <button
-              onClick={() => editTimers(setDeclaredRestcountdown, 'add', 5, 5)}
+              onClick={() => editTimers(setDeclaredRestcountdown, "add", 5, 5)}
             >
               +
             </button>
@@ -183,22 +183,25 @@ export default function WHTimer({ allowSound }) {
       {/* buttons */}
       <div className="startButtonsContainer">
         <button onClick={() => handleStart()}>
-          {isRunning ? 'stop' : 'start'}
+          {isRunning ? "stop" : "start"}
         </button>
         <button>finish</button>
       </div>
       <span
         style={{
-          fontSize: '24px',
-          display: 'block',
-          textAlign: 'center',
-          margin: '15px auto',
+          fontSize: "24px",
+          display: "block",
+          textAlign: "center",
+          margin: "15px auto",
+          textTransform: "uppercase",
+          letterSpacing: "3px",
         }}
       >
         Rounds: {rounds}
       </span>
       {/* Outputs */}
       <div
+        style={{ marginTop: "0px" }}
         className={`outputsContainer ${
           (isRunning && isBreathing && WHTimerCSS.outputCircle) ||
           (isRunning && isHolding && WHTimerCSS.breathout) ||
