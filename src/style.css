@@ -61,6 +61,10 @@ select {
   font-size: 14px;
 }
 
+option {
+  background: #485563;
+}
+
 .header {
   width: 95%;
   display: flex;
