@@ -6,8 +6,8 @@ export default function Options({ language, setLanguage }) {
       {/* <div>{contentObj[language].title}</div> */}
 
       <select onChange={(e) => setLanguage(e.target.value)}>
-        <option value="pl">pl</option>
-        <option value="eng">eng</option>
+        <option value="pl">🇵🇱</option>
+        <option value="eng">🇬🇧</option>
       </select>
     </>
   );
