@@ -18,6 +18,8 @@ export const editTimers = function (target, operation, step, min) {
     case "add":
       target((prev) => prev + step);
       break;
+    default:
+      return;
   }
 };
 

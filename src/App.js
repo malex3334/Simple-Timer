@@ -14,9 +14,10 @@ let activeStyle = {
   borderBottom: "2px solid white",
   padding: "0 2px 3px 2px",
 };
+const userLang = window.navigator.language.slice(0, 2);
 
 export default function App() {
-  const [language, setLanguage] = useState("pl");
+  const [language, setLanguage] = useState(userLang ? userLang : "eng");
   const date = new Date().toISOString().slice(0, 4);
 
   const [allowSound, setAllowSound] = useState(
@@ -26,8 +27,6 @@ export default function App() {
       : JSON.parse(localStorage.getItem("sounds"))
   );
   // const [allowSound, setAllowSound] = useState();
-
-  console.log(allowSound);
   useEffect(() => {
     localStorage.setItem("sounds", allowSound);
   }, [allowSound, setAllowSound]);
@@ -119,9 +118,12 @@ export default function App() {
             </li>
           </ul>
         </div>
-        {/*  */}
         <div className="footer">
-          <a href="https://github.com/malex3334" target="_blank">
+          <a
+            href="https://github.com/malex3334"
+            target="_blank"
+            rel="noreferrer"
+          >
             Copyrights M.A. {date}
           </a>
         </div>

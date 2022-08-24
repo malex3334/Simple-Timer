@@ -12,17 +12,13 @@ import WHTimerCSS from "./WHTimer.module.css";
 
 import contentObj from "../language";
 
-
 export default function WHTimer({ allowSound, language }) {
-  const [defaultValues, setDefaultValeus] = useState({
+  const [defaultValues] = useState({
     breathingTime: 30,
     restTime: 15,
   });
 
   const [showModal, setShowModal] = useState(false);
-
-  const [intervaltest, setintervaltest] = useState();
-
   const [isRunning, setIsRunning] = useState(false);
   const [isBreathing, setIsBreathing] = useState(false);
   const [isHolding, setIsHolding] = useState(false);
