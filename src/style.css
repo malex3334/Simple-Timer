@@ -173,14 +173,17 @@ option {
 
 .inputControl label {
   /* width: 3em; */
-  text-align: end;
+  /* text-align: end; */
+  /* width: 75px; */
+  width: 100px;
 }
 
 .inputControl {
+  /* width:50%; */
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 25px;
+  gap: 15px;
 }
 
 .buttonsContainer {

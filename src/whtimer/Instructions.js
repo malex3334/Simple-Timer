@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 
@@ -72,7 +72,6 @@ export default function Instructions({
               style={{ textDecoration: "none", color: "white" }}
               href="https://www.wimhofmethod.com/breathing-exercises"
               target="_blank"
-              rel="noreferrer"
             >
               Read More
             </a>

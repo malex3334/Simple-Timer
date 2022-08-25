@@ -17,7 +17,7 @@ let activeStyle = {
 const userLang = window.navigator.language.slice(0, 2);
 
 export default function App() {
-  const [language, setLanguage] = useState(userLang ? userLang : "eng");
+  const [language, setLanguage] = useState(userLang);
   const date = new Date().toISOString().slice(0, 4);
 
   const [allowSound, setAllowSound] = useState(
@@ -27,6 +27,8 @@ export default function App() {
       : JSON.parse(localStorage.getItem("sounds"))
   );
   // const [allowSound, setAllowSound] = useState();
+
+  console.log(allowSound);
   useEffect(() => {
     localStorage.setItem("sounds", allowSound);
   }, [allowSound, setAllowSound]);
@@ -99,6 +101,16 @@ export default function App() {
               >
                 HIIT
               </NavLink>
+              {/* <div 
+                style={{
+                  opacity: '1',
+                  margin:'0 auto',
+                  marginTop:'2px',
+                  width: '80%',
+                  height: '2px',
+                  background: 'white',
+                }}
+              ></div> */}
             </li>
             <li>
               <NavLink
@@ -118,12 +130,9 @@ export default function App() {
             </li>
           </ul>
         </div>
+        {/*  */}
         <div className="footer">
-          <a
-            href="https://github.com/malex3334"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://github.com/malex3334" target="_blank">
             Copyrights M.A. {date}
           </a>
         </div>
