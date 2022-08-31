@@ -4,8 +4,7 @@ import { Button, Modal } from "react-bootstrap";
 
 export default function Instructions({
   showModal,
-  setShowModal,
-  openModal,
+
   closeModal,
 }) {
   return (

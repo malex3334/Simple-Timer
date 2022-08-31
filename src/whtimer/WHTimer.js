@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import Modal from '../components/Modal';
+import Scores from "./Scores";
 
 import Instructions from "./Instructions";
 import {
@@ -11,7 +12,6 @@ import {
 import WHTimerCSS from "./WHTimer.module.css";
 
 import contentObj from "../language";
-
 
 export default function WHTimer({ allowSound, language }) {
   const [defaultValues, setDefaultValeus] = useState({
@@ -38,10 +38,24 @@ export default function WHTimer({ allowSound, language }) {
     defaultValues.restTime
   );
 
+  const [breathHoldScores, setBreathHoldScores] = useState([]);
+  const [showScores, setShowScores] = useState(false);
+
   const [rounds, setRounds] = useState(0);
   let breathTimer;
   let holdTimer;
   let restTimer;
+
+  const handleFinish = () => {
+    console.log(breathHoldScores);
+    setShowScores(true);
+    handleStart();
+  };
+
+  const handleReset = () => {
+    setDeclaredBreathCountdown(defaultValues.breathingTime);
+    setDeclaredRestcountdown(defaultValues.restTime);
+  };
 
   function closeModal() {
     setShowModal(false);
@@ -58,6 +72,7 @@ export default function WHTimer({ allowSound, language }) {
       setIsRunning(true);
       setIsBreathing(false);
       playSound(allowSound);
+      setBreathHoldScores([]);
     } else {
       setIsRunning(false);
       setIsHolding(false);
@@ -71,6 +86,8 @@ export default function WHTimer({ allowSound, language }) {
 
   const handleStopTimer = function () {
     if (isHolding) {
+      setBreathHoldScores((prev) => [...prev, breathHoldTimer]);
+
       setIsHolding(false);
       setIsResting(true);
     }
@@ -200,7 +217,11 @@ export default function WHTimer({ allowSound, language }) {
         <button onClick={() => handleStart()}>
           {isRunning ? "stop" : "start"}
         </button>
-        <button>finish</button>
+        {isRunning ? (
+          <button onClick={handleFinish}>finish</button>
+        ) : (
+          <button onClick={handleReset}>reset</button>
+        )}
       </div>
       <span
         style={{
@@ -276,6 +297,13 @@ export default function WHTimer({ allowSound, language }) {
       >
         {contentObj[language].whTimer.about}
       </button>
+      {/* show scores modal to be added */}
+      <Scores
+        showScores={showScores}
+        setShowScores={setShowScores}
+        breathHoldScores={breathHoldScores}
+        language={language}
+      />
       <div>
         <Instructions
           showModal={showModal}
