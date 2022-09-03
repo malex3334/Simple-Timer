@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import Modal from '../components/Modal';
 import Scores from "./Scores";
+import Modal from "../components/Modal";
 
 import Instructions from "./Instructions";
 import {
@@ -20,8 +21,6 @@ export default function WHTimer({ allowSound, language }) {
   });
 
   const [showModal, setShowModal] = useState(false);
-
-  const [intervaltest, setintervaltest] = useState();
 
   const [isRunning, setIsRunning] = useState(false);
   const [isBreathing, setIsBreathing] = useState(false);
@@ -298,32 +297,20 @@ export default function WHTimer({ allowSound, language }) {
         {contentObj[language].whTimer.about}
       </button>
       {/* show scores modal to be added */}
-      <Scores
-        showScores={showScores}
-        setShowScores={setShowScores}
-        breathHoldScores={breathHoldScores}
-        language={language}
-      />
-      <div>
-        <Instructions
-          showModal={showModal}
-          setShowModal={setShowModal}
-          openModal={openModal}
-          closeModal={closeModal}
+      <Modal showModal={showScores} setShowModal={setShowScores}>
+        <Scores
+          breathHoldScores={breathHoldScores}
+          language={language}
+          showScores={showScores}
+          setShowScores={setShowScores}
         />
+      </Modal>
+
+      <div>
+        <Modal showModal={showModal} setShowModal={setShowModal}>
+          <Instructions showModal={showModal} setShowModal={setShowModal} />
+        </Modal>
       </div>
     </div>
   );
 }
-
-// ###TODO:
-
-//  logic:
-// [x] 1. Start function
-// [x] 2. Countdown from Input to 0 ### Breath in / Breath out
-// [x] 3. When Countdown = 0 => start Timer from 0 to Buttton(stop breathold) click.
-// [x] 4. Countdown from Input#2 to 0.
-// [ ] 5. Repeat function until Button(finish) click
-
-// ideas:
-//  1. breathing rate corelated with animation repeat tempo (breath in and out command)

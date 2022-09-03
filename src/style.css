@@ -254,22 +254,24 @@ button:active {
 }
 
 .modal {
-  position: absolute;
-  /* width: 100vw;
-  height: 100vh; */
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  /* width: 100%;
+  height: 100%; */
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.501);
-  overflow-y: scroll;
   padding: 0;
   backdrop-filter: blur(10px);
 }
 
 .testWrapper {
   margin: 0 auto;
-  width: 25% !important;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  /* width: 25% !important; */
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.31);
   background: linear-gradient(60deg, #29323c 0%, #485563 100%);
 }
@@ -360,8 +362,9 @@ button:active {
   }
 
   .testWrapper {
-    margin-top: 7%;
-    width: 40%;
+    margin: 0 auto;
+    max-width: 70%;
+    max-height: 100%;
   }
 
   .container {
@@ -388,5 +391,13 @@ button:active {
 
   .inputControl label {
     width: 65px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .testWrapper {
+    margin: 10% auto;
+    max-width: 40%;
+    max-height: 100%;
   }
 }

@@ -1,26 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
+import ReactDOM from "react-dom";
+import "../style.css";
 
-export default function Modal(props) {
-  return (
-    <div
-      className="modal-container"
-      style={{
-        position: "absolute",
-        background: "rgba(0,0,0,0.5)",
-        width: "75%",
-        height: "50%",
-        top: "10%",
-        backdropFilter: "blur(8px)",
-      }}
-    >
-      <div
-        className="modal-nav"
-        style={{ textAlign: "end", paddingRight: "10px" }}
-      >
-        X
-      </div>
-      <div className="modal-header">{props.children} </div>
-      <div className="modal-body"></div>
-    </div>
-  );
+function Modal({ showModal, setShowModal, children }) {
+  const modalRef = useRef(null);
+
+  const handleCloseOnClick = (e) => {
+    const clickPosition = e.target.getBoundingClientRect();
+
+    clickPosition.top === 0 && setShowModal(false);
+  };
+
+  if (showModal) {
+    return ReactDOM.createPortal(
+      <div className="modal" onClick={(e) => handleCloseOnClick(e)}>
+        <div className="testWrapper" ref={modalRef}>
+          {children}
+        </div>
+      </div>,
+
+      document.querySelector("#modal")
+    );
+  }
 }
+
+export default Modal;
