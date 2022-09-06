@@ -101,16 +101,6 @@ export default function App() {
               >
                 HIIT
               </NavLink>
-              {/* <div 
-                style={{
-                  opacity: '1',
-                  margin:'0 auto',
-                  marginTop:'2px',
-                  width: '80%',
-                  height: '2px',
-                  background: 'white',
-                }}
-              ></div> */}
             </li>
             <li>
               <NavLink

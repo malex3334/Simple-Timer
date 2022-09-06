@@ -27,14 +27,22 @@ export const updateValues = function (operator) {
 };
 
 //  sound function
-export const playSound = function (operator) {
+export const playSound = function (operator, soundType = "ring") {
+  let sound;
   if (operator) {
-    let sound = new Audio(
-      "https://www.myinstants.com/media/sounds/boxing-bell.mp3"
-    );
-    // let sound = new Audio(
+    if (soundType === "ring") {
+      sound = new Audio(
+        "https://www.myinstants.com/media/sounds/boxing-bell.mp3"
+      );
+    }
+    if (soundType === "gong") {
+      sound = new Audio(
+        "https://cdn.pixabay.com/download/audio/2022/03/15/audio_bd82584fc4.mp3?filename=gong_center_clear-93480.mp3"
+      );
+    }
+
     //   'https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b08b6e711.mp3?filename=ship-bell-single-ring-81833.mp3'
-    // );
+
     sound.volume = 0.6;
     sound.play();
     setTimeout(() => {

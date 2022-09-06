@@ -56,9 +56,6 @@ export default function WHTimer({ allowSound, language }) {
     setDeclaredRestcountdown(defaultValues.restTime);
   };
 
-  function closeModal() {
-    setShowModal(false);
-  }
   function openModal() {
     setShowModal(true);
   }
@@ -70,7 +67,7 @@ export default function WHTimer({ allowSound, language }) {
       setBreathHoldTimer(0);
       setIsRunning(true);
       setIsBreathing(false);
-      playSound(allowSound);
+      playSound(allowSound, "gong");
       setBreathHoldScores([]);
     } else {
       setIsRunning(false);
@@ -105,7 +102,7 @@ export default function WHTimer({ allowSound, language }) {
         clearInterval(breathTimer);
         setIsHolding(true);
         setBreathCountdown(declaredBreathCountdown);
-        playSound(allowSound);
+        playSound(allowSound, "gong");
       }
 
       if (isHolding) {
@@ -127,7 +124,7 @@ export default function WHTimer({ allowSound, language }) {
         setIsBreathing(true);
         setRestCountdown(declaredRestCountdown);
         setRounds((prev) => prev + 1);
-        playSound(allowSound);
+        playSound(allowSound, "gong");
       }
     }
 
