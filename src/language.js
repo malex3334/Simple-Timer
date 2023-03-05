@@ -43,7 +43,7 @@ const contentObj = {
     },
     about: {
       title: `O aplikacji`,
-      paragraph: ` Aplikacja powstała z myślą o prostym i użytecznym narzędziu od kontrolowania swojego treningu. Celem była prostota i funkcjonalność. Chętnie przyjmę pomysły i sugestie!`,
+      paragraph: ` Aplikacja powstała z myślą o prostym i użytecznym narzędziu do kontrolowania swojego treningu. Celem była prostota i funkcjonalność.`,
     },
   },
   // english
